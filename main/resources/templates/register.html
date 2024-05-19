@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/capture.PNG');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: auto;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            backdrop-filter: blur(10px);
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        form button {
+            width: 100%;
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #4CAF50;
+        }
+
+        form button:active {
+            background-color: #45a049;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form input[type="password"]:focus {
+            outline: none;
+            border-color: dodgerblue;
+            box-shadow: 0 0 5px dodgerblue;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<img src="/airportlogo.png" alt="Logo" class="logo">
+
+<p th:text="${message}" style="color: red; font-weight: bold;"></p>
+
+<form action="reg">
+    <h2>Register</h2>
+    <label for="username">Enter Username</label>
+    <input type="text" id="username" name="username" required>
+    <label for="email">Enter Email</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Enter Password</label>
+    <input type="password" id="password" name="password" required>
+    <br><br>
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>

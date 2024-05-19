@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: dodgerblue;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #007acc;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Please select an option</h1>
+
+<div class="button-container">
+    <a th:href="@{'reservation?mail=' +${mail}}" class="button"><b>Reserve the flight ticket</b></a>
+    <a href="remover" class="button"><b>Cancel your reservation</b></a>
+    <a href="checker" class="button"><b>Check your booking status</b></a>
+</div>
+
+</body>
+
+</html>

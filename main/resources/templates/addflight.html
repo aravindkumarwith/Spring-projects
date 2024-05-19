@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 60%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.left-inputs, .right-inputs {
+    width: 45%;
+}
+
+.file-input {
+    width: 100%;
+    text-align: center;
+}
+
+label {
+    width: 100%;
+    text-align: right;
+    padding-right: 10px;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: darkblue;
+}
+
+    </style>
+</head>
+
+<body>
+
+<form action="put" method="POST" enctype="multipart/form-data">
+
+    <div class="left-inputs">
+        <label for="flight_no"><b>Flight Number</b></label>
+        <input type="text" name="flight_no">
+        
+        <label for="from"><b>From</b></label>
+        <input type="text" name="from">
+        
+        <label for="to"><b>To</b></label>
+        <input type="text" name="to">
+        
+        <label for="depart"><b>Departure</b></label>
+        <input type="text" name="depart">
+    </div>
+
+    <div class="right-inputs">
+        <label for="arrival"><b>Arrival</b></label>
+        <input type="text" name="arrival">
+        
+        <label for="Date"><b>Date</b></label>
+        <input type="text" name="Date">
+        
+        <label for="avai_econnomyseats"><b>Available Economy Seats</b></label>
+        <input type="text" name="avai_econnomyseats">
+        
+        <label for="avai_businessseats"><b>Available Business Seats</b></label>
+        <input type="text" name="avai_businessseats">
+    </div>
+    
+    <div class="file-input">
+        <label for="image"><b>Upload Destination Image</b></label>
+        <input type="file" name="image">
+    </div>
+    
+    <button type="submit"><b>Submit</b></button>
+</form>
+
+</body>
+</html>

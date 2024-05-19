@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="seatstyle.css">
+  <style>
+    /* Center the logout button */
+    .logout-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Style the logout button */
+    .logout-button {
+      padding: 10px 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .logout-button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2 style="text-align:center">Please check the below seats availability and reserve accordingly</h2>
+
+  <div th:if="${message eq 'sorry Economy are fully booked. so waiting list'}" th:style="${'color: red;text-align:center;background-color:yellow'}">
+    <b>sorry Economy are fully booked. so Waiting list</b>
+  </div>
+
+  <div th:else th:if="${message eq 'sorry Business are fully booked. so waiting list'}" th:style="${'color: red;text-align:center;background-color:yellow'}">
+    <b>sorry Business are fully booked. so Waiting list</b>
+  </div>
+
+  <div th:else th:if="${message eq 'business book'}" th:style="${'color: green;text-align:center;background-color:yellow'}">
+    <B>Business seats are reserved for this person <span th:text="${name}"></span> with confirmation number of <span th:text="${num}"></span></B>
+  </div>
+
+  <div th:else th:if="${message eq 'economy book'}" th:style="${'color: green ;text-align:center;background-color:yellow'}">
+    <b>Economy seats are reserved for this person <span th:text="${name}"></span> with confirmation number of <span th:text="${num}"></span>.</b>
+  </div>
+
+  <table border="5">
+    <thead>
+      <tr>
+        <th>Destiny Image</th>
+        <th>Date</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th> Economy Seats</th>
+        <th> Business Seats</th>
+        <th>Reservation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="flight : ${list}" class="flight-details">
+        <td><img class="flight-image" th:src="'data:image/jpeg;base64,' + ${flight.image}" height="200px" width="150px"></td>
+        <td th:text="${flight.date}"></td>
+        <td th:text="${flight.from}"></td>
+        <td th:text="${flight.to}"></td>
+        <td th:text="${flight.depart}"></td>
+        <td th:text="${flight.arrival}"></td>
+        <td th:text="${flight.avai_econnomyseats}"></td>
+        <td th:text="${flight.avai_businessseats}"></td>
+        <td>
+          <form action="book">
+            <label for="name">Enter Passenger Name</label>
+            <input type="text" name="name">
+            <br>
+            <label for="seat">Select Category</label>
+            <input type="radio" name="seat" value="Economy"> Economy
+            <input type="radio" name="seat" value="Business"> Business
+            <br>
+            <input type="hidden" name="mail" th:value="${mail}">
+            <input type="hidden" name="flight_no" th:value="${flight.flight_no}">
+            <input type="hidden" name="from" th:value="${flight.from}">
+            <input type="hidden" name="to" th:value="${flight.to}">
+            <input type="hidden" name="Date" th:value="${flight.Date}">
+            <input type="hidden" name="depart" th:value="${flight.depart}">
+            <input type="hidden" name="arrival" th:value="${flight.arrival}">
+            <input type="hidden" name="avai_econnomyseats" th:value="${flight.avai_econnomyseats}">
+            <input type="hidden" name="avai_businessseats" th:value="${flight.avai_businessseats}">
+            <button type="submit"><b>Book</b></button>
+          </form>
+          <br>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<br><br>
+  <!-- Logout link -->
+  <div class="logout-container">
+    <a class="logout-button" href="login"><b>Logout</b></a>
+  </div>
+
+</body>
+
+</html>

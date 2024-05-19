@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: darkblue;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .button {
+            padding: 8px 15px;
+            background-color: green;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: darkgreen;
+        }
+
+        .flight-image {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Please proceed for reservation</h1>
+    <form action="show">
+
+        <label for="from"><b>Enter From</b></label>
+        <input type="text" name="from">
+        <label for="to"><b>Enter To</b></label>
+        <input type="text" name="to">
+        <label for="date"><b>Enter Date of Travel</b></label>
+        <input type="text" name="Date">
+
+        <input type="hidden" name="email" th:value="${mail}">
+        <br>
+        <br>
+        <button type="submit">Go</button>
+
+    </form>
+
+    <br>
+    <br>
+    <h3 style="color:red;text-align:center">Flight details to be Displayed below</h3>
+    <table border="7">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Economy Seats</th>
+                <th>Business Seats</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="flight : ${list}">
+                <td th:text="${flight.date}"></td>
+                <td th:text="${flight.from}"></td>
+                <td th:text="${flight.to}"></td>
+                <td th:text="${flight.depart}"></td>
+                <td th:text="${flight.arrival}"></td>
+                <td th:text="${flight.avai_econnomyseats}"></td>
+                <td th:text="${flight.avai_businessseats}"></td>
+                <td>
+                    <img class="flight-image" th:src="'data:image/jpeg;base64,' + ${flight.image}" height="70px">
+                    <br><br>
+                    <a class="button" th:href="@{'reserve?mail=' + ${mail} + '&flight_no=' + ${flight.flight_no} + '&from=' + ${flight.from} + '&to=' + ${flight.to} + '&Date=' + ${flight.Date} + '&depart=' + ${flight.depart} + '&arrival=' + ${flight.arrival} + '&avai_econnomyseats=' + ${flight.avai_econnomyseats} + '&avai_businessseats=' + ${flight.avai_businessseats}}">Proceed to Book</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

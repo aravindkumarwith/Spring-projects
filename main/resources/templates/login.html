@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/flight.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .navbar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .navbar a:hover {
+            color: lightblue;
+        }
+
+        .navbar a:hover::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: green;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent background */
+            padding: 20px;
+            border-radius: 10px; /* Increased border radius */
+            border: 2px solid rgba(255, 255, 255, 0.5); /* Transparent border */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(10px); /* Apply the blur effect */
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: calc(100% - 20px); /* Adjusted width */
+            padding: 6px; /* Adjusted padding */
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: dodgerblue;
+        }
+
+        button {
+            width: calc(100% - 20px); /* Adjusted width */
+            background-color: dodgerblue;
+            color: #ffffff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: green;
+        }
+
+        .welcome-text {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .login-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: dodgerblue; /* Adjusted color */
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px; /* Adjusted font size */
+            color: #333333; /* Adjusted color */
+            margin-bottom: 5px;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Adjust as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+
+<img class="logo" src="/airportlogo.png" alt="Airport Logo">
+
+<div class="navbar">
+    <a href="#">Home</a>
+    <a href="#">Contact Us</a>
+    <a href="#">Register</a>
+    <a href="#">About Us</a>
+</div>
+
+<div class="container">
+    <div class="welcome-text">Welcome to HappyFly</div>
+    <div class="login-container">
+        <div class="login-text">LOGIN</div>
+        <form action="log">
+            <B><label for="email">Enter Email</label></B>
+            <input type="email" id="email" name="email" required>
+
+            <b><label for="password">Enter Password</label></b>
+            <input type="password" id="password" name="password" required>
+
+            <br><br>
+            <button type="submit"><b>Submit</b></button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
