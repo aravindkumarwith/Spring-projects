@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/qioz.css}">
+    <style>
+        body {
+            text-align: center;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<h1>QUIZ</h1>
+
+<div id="timer"><B>Time left: </B><span id="time"><B>00:00</B></span></div>
+
+<form id="quizForm" action="submit" th:if="${qform != null}" th:object="${qform}">
+    <div th:each="ques, i: ${qform.questions}" class="question-container">
+        <div class="question">
+            <p class="question-title" th:text="'Question ' + (${i.index} + 1) + ': ' + ${ques.title}"></p>
+            <label class="option-label">
+                <input type="radio" th:name="|questions[${i.index}].chose|" th:value="1" class="radio-option" required>
+                <span th:text="${ques.optionA}"></span>
+            </label>
+            <label class="option-label">
+                <input type="radio" th:name="|questions[${i.index}].chose|" th:value="2" class="radio-option" required>
+                <span th:text="${ques.optionB}"></span>
+            </label>
+            <label class="option-label">
+                <input type="radio" th:name="|questions[${i.index}].chose|" th:value="3" class="radio-option" required>
+                <span th:text="${ques.optionC}"></span>
+            </label>
+
+            <input type="hidden" th:name="|questions[${i.index}].quesId|" th:value="${ques.quesId}" class="hidden-field">
+            <input type="hidden" th:name="|questions[${i.index}].title|" th:value="${ques.title}" class="hidden-field">
+            <input type="hidden" th:name="|questions[${i.index}].ans|" th:value="${ques.ans}" class="hidden-field">
+        </div>
+    </div>
+
+    <button type="submit" class="submit-button">Submit</button>
+</form>
+
+
+<script>
+    // Set the time limit in minutes
+    var timeLimitInMinutes = 2; // Change this according to your requirements
+
+    // Calculate total time in milliseconds
+    var totalTime = timeLimitInMinutes * 60 * 1000;
+
+    // Get the timer element
+    var timerElement = document.getElementById('time');
+
+    // Function to update the timer
+    function updateTimer() {
+        // Calculate minutes and seconds
+        var minutes = Math.floor(totalTime / 60000);
+        var seconds = ((totalTime % 60000) / 1000).toFixed(0);
+
+        // Display the time in MM:SS format
+        timerElement.textContent = (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+        // Decrease the total time by 1 second
+        totalTime -= 1000;
+
+        // Check if time is up
+        if (totalTime < 0) {
+            // Time's up, perform actions here like submitting the form
+            alert("Time's up! Your quiz will be submitted automatically.");
+            document.getElementById('quizForm').submit(); // Change "quizForm" to the ID of your form
+        }
+    }
+
+    // Call the updateTimer function every second
+    setInterval(updateTimer, 1000);
+</script>
+
+</body>
+</html>

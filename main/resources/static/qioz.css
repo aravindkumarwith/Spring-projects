@@ -1,0 +1,65 @@
+/* styles.css */
+
+/* Container for each question */
+.question-container {
+  border: 1px solid #ccc; /* Gray border */
+  padding: 20px;
+  margin-bottom: 20px; /* Add margin bottom for gap */
+  border-radius: 10px;
+  background-color: #f9f9f9; /* Light gray background */
+  width: 60%; /* Set the width to 60% of the viewport width */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.question-container:hover {
+  width: 70%; /* Increase width on hover */
+  height: auto; /* Increase height on hover */
+ background-color: #e0e0e0
+}
+
+/* Style for question title */
+.question-container p.question-title {
+  font-weight: bold;
+  color: #333; /* Dark gray color */
+  margin-bottom: 10px;
+}
+
+/* Style for options */
+.question-container label.option-label {
+  display: flex; /* Use flexbox */
+  align-items: center; /* Center vertically */
+  margin-bottom: 10px;
+  margin-left:300px;
+}
+
+/* Style for radio buttons */
+.question-container label.option-label input[type="radio"] {
+  margin-right: 10px; /* Add some spacing between radio button and option text */
+}
+
+/* Style for options text */
+.question-container label.option-label span {
+  color: #666; /* Medium gray color */
+}
+
+/* Style for submit button */
+.submit-button {
+  margin-top: 20px;
+  background-color: #007bff; /* Blue color */
+  color: #fff; /* White color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect for submit button */
+.submit-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.submit-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  
+}
+

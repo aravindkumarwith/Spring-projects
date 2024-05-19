@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif; /* Custom font */
+            background-size: cover; /* Cover the entire container */
+            background-repeat: no-repeat; /* No repeating */
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            opacity: 0.9; /* Adjust opacity for better visibility */
+        }
+
+        h1,
+        p {
+            font-family: 'Times New Roman', Times, serif; /* Custom font for headings and paragraphs */
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: red; /* Change color to red on hover */
+        }
+    </style>
+</head>
+
+<body>
+   
+    <BR><BR>
+    <div class="container">
+     <h1 style="text-align: center;"><u>QUIZ RESULT</u></h1>
+        <h1 style="color:green">Your Name</h1>
+        <h2><p th:text="${name}"></p></h2>
+        <h1 style="color:green">Your Score</h1>
+        <h2><p th:text="${res}"></p></h2>
+        <form action="logout">
+            <button><B>LOGOUT</B></button>
+        </form>
+    </div>
+</body>
+
+</html>

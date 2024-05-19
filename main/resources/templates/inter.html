@@ -1,48 +1,52 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en">
 <head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f3f3;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .button {
-            display: inline-block;
-            background-color: dodgerblue;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 0 10px;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #007acc;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Links</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: skyblue; /* Set background color to blue */
+  }
+  .container {
+    text-align: center;
+  }
+  p {
+    font-weight: bold;
+  }
+  a {
+    display: inline-block;
+    margin: 20px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease;
+  }
+  img {
+    max-width: 200px;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+  }
+  a:hover img {
+    transform: scale(1.1); /* Increase size by 10% */
+  }
+</style>
 </head>
-
 <body>
 
-<h1>Please select an option</h1>
-
-<div class="button-container">
-    <a th:href="@{'reservation?mail=' +${mail}}" class="button"><b>Reserve the flight ticket</b></a>
-    <a href="remover" class="button"><b>Cancel your reservation</b></a>
-    <a href="checker" class="button"><b>Check your booking status</b></a>
+<div class="container">
+  <h1>Please select the subject to start the Quiz</h1>
+  <a href="quizi?name=java"><img src="/java.png" alt="Java"></a>
+  <a href="quizi?name=python"><img src="/python.png" alt="Python"></a>
 </div>
 
 </body>
-
 </html>

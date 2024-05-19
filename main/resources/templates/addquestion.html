@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+    .button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.button:hover {
+  background-color: darkred;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: dodgerblue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4CAF50;
+        }
+
+        button:active {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<h2><p th:text="${message}" style="text-align:center;color:green"></h2>
+<h2 style="text-align:center">ADD QUESTIONS BELOW</h2>
+<form action="put">
+	<label for="chose">Enter Category</label>
+    <input type="text" id="chose" name="chose">
+    <label for="title">Enter Question</label>
+    <input type="text" id="title" name="title">
+    <label for="optionA">Enter Option A</label>
+    <input type="text" id="optionA" name="optionA">
+    <label for="optionB">Enter Option B</label>
+    <input type="text" id="optionB" name="optionB">
+    <label for="optionC">Enter Option C</label>
+    <input type="text" id="optionC" name="optionC">
+    <label for="ans">Enter Answer in number(if option1 is answer, then enter 1)</label>
+    <input type="text" id="ans" name="ans">
+    <input type="hidden" name="chose" value="-1">
+    <button type="submit"><b>Submit</b></button>
+</form>
+	<a href="logout" class="button">LOGOUT</a>
+</body>
+</html>

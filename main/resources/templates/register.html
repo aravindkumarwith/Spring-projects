@@ -82,11 +82,11 @@
 </head>
 <body>
 
-<img src="/airportlogo.png" alt="Logo" class="logo">
+
 
 <p th:text="${message}" style="color: red; font-weight: bold;"></p>
 
-<form action="reg">
+<form action="reg" onsubmit="return validateForm()">
     <h2>Register</h2>
     <label for="username">Enter Username</label>
     <input type="text" id="username" name="username" required>
@@ -97,6 +97,20 @@
     <br><br>
     <button type="submit">Submit</button>
 </form>
+
+<script>
+    function validateForm() {
+        var password = document.getElementById("password").value;
+        var specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+        if (password.length < 8 || !specialChars.test(password)) {
+            alert("Password must be at least 8 characters long and contain at least one special character.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
 
 </body>
 </html>
